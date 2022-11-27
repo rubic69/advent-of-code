@@ -1,9 +1,10 @@
 package com.kp.puzzles;
 
-import java.util.Iterator;
 import java.util.List;
 
-public class Puzzle01 implements Puzzle<List<Integer>, Integer> {
+public class Day01Part2 implements Puzzle<List<Integer>, Integer> {
+
+    private static final int GAP = 3;
 
     @Override
     public Integer solve(List<Integer> input) {
@@ -13,17 +14,17 @@ public class Puzzle01 implements Puzzle<List<Integer>, Integer> {
 
         int increaseCounter = 0;
 
-        Iterator<Integer> iterator = input.iterator();
-        Integer current = iterator.next();
+        for (int i = 0; i < input.size(); i++) {
+            if (i == input.size() - GAP) {
+                break;
+            }
 
-        while (iterator.hasNext()) {
-            Integer next = iterator.next();
+            Integer current = input.get(i);
+            Integer next = input.get(i + GAP);
 
             if (current < next) {
                 increaseCounter++;
             }
-
-            current = next;
         }
 
         return increaseCounter;
