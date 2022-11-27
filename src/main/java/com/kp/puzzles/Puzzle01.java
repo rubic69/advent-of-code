@@ -1,10 +1,31 @@
 package com.kp.puzzles;
 
-public class Puzzle01 implements Puzzle<Object, Object> {
+import java.util.Iterator;
+import java.util.List;
+
+public class Puzzle01 implements Puzzle<List<Integer>, Integer> {
 
     @Override
-    public Object solve(Object input) {
-        return new Object();
-    }
+    public Integer solve(List<Integer> input) {
+        if (input.isEmpty()) {
+            return 0;
+        }
 
+        int increaseCounter = 0;
+
+        Iterator<Integer> iterator = input.iterator();
+        Integer current = iterator.next();
+
+        while (iterator.hasNext()) {
+            Integer next = iterator.next();
+
+            if (current < next) {
+                increaseCounter++;
+            }
+
+            current = next;
+        }
+
+        return increaseCounter;
+    }
 }
