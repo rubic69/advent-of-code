@@ -1,6 +1,4 @@
-package com.kp.puzzles;
-
-import com.kp.puzzles.Puzzle;
+package com.kp.aoc.year21.day1;
 
 import java.util.Iterator;
 import java.util.List;

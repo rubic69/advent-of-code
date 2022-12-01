@@ -1,4 +1,4 @@
-package com.kp.puzzles;
+package com.kp.aoc.year21.day1;
 
 import java.util.List;
 

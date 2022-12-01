@@ -1,10 +1,21 @@
-package com.kp.puzzles;
+package com.kp.aoc.year21.day1;
+
+import com.kp.aoc.Solver;
 
 import java.util.List;
 
-public class Day01Combined implements Puzzle<Day01Combined.Input, Integer> {
+public class Day01Combined implements Solver<Day01Combined.Input, Integer> {
 
     @Override
+    public Integer solvePartOne(Input input) {
+        return solve(input);
+    }
+
+    @Override
+    public Integer solvePartTwo(Input input) {
+        return solve(input);
+    }
+
     public Integer solve(Input input) {
         List<Integer> depths = input.depths();
         if (depths.isEmpty()) {

@@ -1,6 +1,5 @@
-package com.kp.puzzles;
+package com.kp.aoc.year21.day1;
 
-import lombok.extern.java.Log;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,24 +12,23 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Log
-class Day01Part1Test {
+class Day01Part2Test {
 
     private Puzzle<List<Integer>, Integer> puzzle;
 
     @BeforeEach
     void init() {
-        puzzle = new Day01Part1();
+        puzzle = new Day01Part2();
     }
 
     @Test
     void test_input_sample() throws IOException {
-        assertEquals(7, puzzle.solve(readInput("part_1_sample")));
+        assertEquals(5, puzzle.solve(readInput("part_2_sample")));
     }
 
     @Test
     void test_input() throws IOException {
-        assertEquals(1521, puzzle.solve(readInput("part_1_input")));
+        assertEquals(1543, puzzle.solve(readInput("part_2_input")));
     }
 
     private List<Integer> readInput(String fileName) throws IOException {
