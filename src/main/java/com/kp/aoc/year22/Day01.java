@@ -10,29 +10,19 @@ public class Day01 implements Solver<Day01.Input, Integer> {
 
     @Override
     public Integer solvePartOne(Day01.Input input) {
-        AtomicInteger highestAmount = new AtomicInteger(0);
-        AtomicInteger currentAmount = new AtomicInteger(0);
-
-        input.calories().forEach(amount -> {
-            if (amount != null) {
-                currentAmount.addAndGet(amount);
-            } else {
-                if (highestAmount.get() < currentAmount.get()) {
-                    highestAmount.set(currentAmount.get());
-                }
-                currentAmount.set(0);
-            }
-        });
-
-        return highestAmount.get();
+        return performGenericSolve(input);
     }
 
     @Override
     public Integer solvePartTwo(Day01.Input input) {
+        return performGenericSolve(input);
+    }
+
+    private static Integer performGenericSolve(Input input) {
         ArrayList<Integer> topHighestAmounts = new ArrayList<>();
         AtomicInteger currentAmount = new AtomicInteger(0);
 
-        input.calories.forEach(amount -> {
+        input.calories().forEach(amount -> {
             if (amount != null) {
                 currentAmount.addAndGet(amount);
             } else {
