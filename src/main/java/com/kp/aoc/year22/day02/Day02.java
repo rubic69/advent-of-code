@@ -62,18 +62,11 @@ public class Day02 implements Solver<Day02.Input, Integer> {
         HandShape opponentShape = HandShape.of(shapeAndOutcomePair[0].charAt(0));
         Outcome outcome = Outcome.get(shapeAndOutcomePair[1].charAt(0));
 
-        switch (outcome) {
-            case WIN -> {
-                return outcome.getScore() + shapeLoseAgainst.get(opponentShape).getShapeScore();
-            }
-            case LOSE -> {
-                return + outcome.getScore() + shapeWinsAgainst.get(opponentShape).getShapeScore();
-            }
-            case DRAW -> {
-                return outcome.getScore() + opponentShape.getShapeScore();
-            }
-            default -> throw new UnsupportedOperationException("Shouldn't never happen because every case is covered");
-        }
+        return switch (outcome) {
+            case WIN -> outcome.getScore() + shapeLoseAgainst.get(opponentShape).getShapeScore();
+            case LOSE -> outcome.getScore() + shapeWinsAgainst.get(opponentShape).getShapeScore();
+            case DRAW -> outcome.getScore() + opponentShape.getShapeScore();
+        };
     }
 
     protected record Input(List<String[]> handShapes) {}
