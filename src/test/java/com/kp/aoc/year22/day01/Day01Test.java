@@ -1,4 +1,4 @@
-package com.kp.aoc.year22;
+package com.kp.aoc.year22.day01;
 
 import com.kp.aoc.Solver;
 import org.junit.jupiter.api.BeforeEach;
