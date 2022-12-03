@@ -26,6 +26,18 @@ class Day03Test {
         assertEquals(8018, solver.solvePartOne(new Day03.Input(rucksacks)));
     }
 
+    @Test
+    void test_part_2_input_sample() throws IOException {
+        List<String> rucksacks = readInput("part_1_sample");
+        assertEquals(70, solver.solvePartTwo(new Day03.Input(rucksacks)));
+    }
+
+    @Test
+    void test_part_2_input() throws IOException {
+        List<String> rucksacks = readInput("part_1_input");
+        assertEquals(2518, solver.solvePartTwo(new Day03.Input(rucksacks)));
+    }
+
     private List<String> readInput(String fileName) throws IOException {
         Path path = Paths.get("src/test/resources/year22/day03/%s.txt".formatted(fileName));
         return Files.readAllLines(path);
