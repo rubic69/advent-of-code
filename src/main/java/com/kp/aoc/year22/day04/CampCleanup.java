@@ -20,17 +20,11 @@ public class CampCleanup implements Solver<List<String>, Long> {
 
     private boolean encloses(String line) {
         String[] pair = line.split(DELIMITER_PAIR);
-        String[] range1 = pair[0].split(DELIMITER_RANGE);
-        String[] range2 = pair[1].split(DELIMITER_RANGE);
 
-        int range1Start = parseInt(range1[0]);
-        int range1End = parseInt(range1[1]);
+        Range range1 = Range.parse(pair[0]);
+        Range range2 = Range.parse(pair[1]);
 
-        int range2Start = parseInt(range2[0]);
-        int range2End = parseInt(range2[1]);
-
-        return (range1Start <= range2Start && range1End >= range2End) ||
-                (range2Start <= range1Start && range2End >= range1End);
+        return range1.encloses(range2) || range2.encloses(range1);
     }
 
     @Override
@@ -42,15 +36,27 @@ public class CampCleanup implements Solver<List<String>, Long> {
 
     private boolean overlaps(String line) {
         String[] pair = line.split(DELIMITER_PAIR);
-        String[] range1 = pair[0].split(DELIMITER_RANGE);
-        String[] range2 = pair[1].split(DELIMITER_RANGE);
 
-        int range1Start = parseInt(range1[0]);
-        int range1End = parseInt(range1[1]);
+        Range range1 = Range.parse(pair[0]);
+        Range range2 = Range.parse(pair[1]);
 
-        int range2Start = parseInt(range2[0]);
-        int range2End = parseInt(range2[1]);
+        return range1.overlaps(range2);
+    }
 
-        return Math.max(range1Start, range2Start) <= Math.min(range1End, range2End);
+    private record Range(int start, int end) {
+
+        boolean encloses(Range range) {
+            return this.start <= range.start && this.end >= range.end;
+        }
+
+        boolean overlaps(Range range) {
+            return Math.max(this.start, range.start) <= Math.min(this.end, range.end);
+        }
+
+        static Range parse(String stringRepresentation) {
+            String[] rangeValues = stringRepresentation.split(DELIMITER_RANGE);
+            return new Range(parseInt(rangeValues[0]), parseInt(rangeValues[1]));
+        }
+
     }
 }
