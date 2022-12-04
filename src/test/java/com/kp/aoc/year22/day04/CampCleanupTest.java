@@ -47,6 +47,18 @@ class CampCleanupTest {
         assertEquals(538, solver.solvePartOne(input));
     }
 
+    @Test
+    void test_part_2_input_sample() throws IOException {
+        List<String> input = readInput("sample");
+        assertEquals(4, solver.solvePartTwo(input));
+    }
+
+    @Test
+    void test_part_2_input() throws IOException {
+        List<String> input = readInput("input");
+        assertEquals(792, solver.solvePartTwo(input));
+    }
+
     private List<String> readInput(String fileName) throws IOException {
         Path path = Paths.get("src/test/resources/year22/day04/%s.txt".formatted(fileName));
         return Files.readAllLines(path);
