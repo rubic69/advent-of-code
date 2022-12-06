@@ -9,17 +9,25 @@ public class TuningTrouble implements Solver<String, Integer> {
 
     @Override
     public Integer solvePartOne(String input) {
+        return findIndex(input, 4);
+    }
+
+    @Override
+    public Integer solvePartTwo(String input) {
+        return findIndex(input, 14);
+    }
+
+    private static int findIndex(String input, int size) {
         char[] chars = input.toCharArray();
 
         Set<Character> set = new HashSet<>();
 
-        for (int i = 3; i < chars.length; i++) {
-            set.add(chars[i - 3]);
-            set.add(chars[i - 2]);
-            set.add(chars[i - 1]);
-            set.add(chars[i]);
+        for (int i = size - 1; i < chars.length; i++) {
+            for (int j = 0; j < size; j++) {
+                set.add(chars[i - j]);
+            }
 
-            if (set.size() == 4) {
+            if (set.size() == size) {
                 return i + 1;
             }
 
@@ -28,5 +36,4 @@ public class TuningTrouble implements Solver<String, Integer> {
 
         return -1;
     }
-
 }

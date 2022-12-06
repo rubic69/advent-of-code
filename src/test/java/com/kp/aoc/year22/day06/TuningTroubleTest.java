@@ -34,6 +34,20 @@ class TuningTroubleTest {
         assertEquals(1109, solver.solvePartOne(readInput("input").get(0)));
     }
 
+    @Test
+    void test_part_2_sample() {
+        assertEquals(19, solver.solvePartTwo("mjqjpqmgbljsphdztnvjfqwrcgsmlb"));
+        assertEquals(23, solver.solvePartTwo("bvwbjplbgvbhsrlpgdmjqwftvncz"));
+        assertEquals(23, solver.solvePartTwo("nppdvjthqldpwncqszvftbrmjlhg"));
+        assertEquals(29, solver.solvePartTwo("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg"));
+        assertEquals(26, solver.solvePartTwo("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw"));
+    }
+
+    @Test
+    void test_part_2_input() throws IOException {
+        assertEquals(3965, solver.solvePartTwo(readInput("input").get(0)));
+    }
+
     private List<String> readInput(String fileName) throws IOException {
         Path path = Paths.get("src/test/resources/year22/day06/%s.txt".formatted(fileName));
         return Files.readAllLines(path);
